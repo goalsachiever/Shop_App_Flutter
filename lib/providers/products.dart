@@ -24,91 +24,91 @@ class Products with ChangeNotifier {
         imageUrl:
         "https://m.media-amazon.com/images/I/51hPifFFT4L._UY741_.jpg"),
     Product(
-        id: 'p1',
+        id: 'p4',
         title: 'Blue Shirt',
         description: 'A red shirt - its a preety red! ',
         price: 29.90,
         imageUrl:
         "https://m.media-amazon.com/images/I/51hPifFFT4L._UY741_.jpg"),
     Product(
-        id: 'p1',
+        id: 'p5',
         title: 'Orange Shirt',
         description: 'A red shirt - its a preety red! ',
         price: 29.90,
         imageUrl:
         "https://m.media-amazon.com/images/I/51hPifFFT4L._UY741_.jpg"),
     Product(
-        id: 'p1',
+        id: 'p6',
         title: 'Orange Shirt',
         description: 'A red shirt - its a preety red! ',
         price: 29.90,
         imageUrl:
         "https://m.media-amazon.com/images/I/51hPifFFT4L._UY741_.jpg"),
     Product(
-        id: 'p1',
+        id: 'p7',
         title: 'Orange Shirt',
         description: 'A red shirt - its a preety red! ',
         price: 29.90,
         imageUrl:
         "https://m.media-amazon.com/images/I/51hPifFFT4L._UY741_.jpg"),
     Product(
-        id: 'p1',
+        id: 'p8',
         title: 'Orange Shirt',
         description: 'A red shirt - its a preety red! ',
         price: 29.90,
         imageUrl:
         "https://m.media-amazon.com/images/I/51hPifFFT4L._UY741_.jpg"),
     Product(
-        id: 'p1',
+        id: 'p9',
         title: 'Orange Shirt',
         description: 'A red shirt - its a preety red! ',
         price: 29.90,
         imageUrl:
         "https://m.media-amazon.com/images/I/51hPifFFT4L._UY741_.jpg"),
     Product(
-        id: 'p1',
+        id: 'p10',
         title: 'Orange Shirt',
         description: 'A red shirt - its a preety red! ',
         price: 29.90,
         imageUrl:
         "https://m.media-amazon.com/images/I/51hPifFFT4L._UY741_.jpg"),
     Product(
-        id: 'p1',
+        id: 'p11',
         title: 'Orange Shirt',
         description: 'A red shirt - its a preety red! ',
         price: 29.90,
         imageUrl:
         "https://m.media-amazon.com/images/I/51hPifFFT4L._UY741_.jpg"),
     Product(
-        id: 'p1',
+        id: 'p13',
         title: 'Orange Shirt',
         description: 'A red shirt - its a preety red! ',
         price: 29.90,
         imageUrl:
         "https://m.media-amazon.com/images/I/51hPifFFT4L._UY741_.jpg"),
     Product(
-        id: 'p1',
+        id: 'p14',
         title: 'Orange Shirt',
         description: 'A red shirt - its a preety red! ',
         price: 29.90,
         imageUrl:
         "https://m.media-amazon.com/images/I/51hPifFFT4L._UY741_.jpg"),
     Product(
-        id: 'p1',
+        id: 'p15',
         title: 'Orange Shirt',
         description: 'A red shirt - its a preety red! ',
         price: 29.90,
         imageUrl:
         "https://m.media-amazon.com/images/I/51hPifFFT4L._UY741_.jpg"),
     Product(
-        id: 'p1',
+        id: 'p16',
         title: 'Orange Shirt',
         description: 'A red shirt - its a preety red! ',
         price: 29.90,
         imageUrl:
         "https://m.media-amazon.com/images/I/51hPifFFT4L._UY741_.jpg"),
     Product(
-        id: 'p1',
+        id: 'p17',
         title: 'Orange Shirt',
         description: 'A red shirt - its a preety red! ',
         price: 29.90,

@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app/screens/cart_screen.dart';
+import 'package:shop_app/widgets/badge.dart';
+import '../providers/cart.dart';
 import '../providers/products.dart';
 import '../widgets/product_item.dart';
 import '../providers/product.dart';
@@ -26,7 +29,9 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+
           title: Text("MyShop"),
+          centerTitle: true,
           actions: <Widget>[
             PopupMenuButton(
               onSelected: (FilterOptions selectedValue) {
@@ -52,9 +57,24 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
                     child: Text("Show All"), value: FilterOptions.All),
               ],
             ),
-            
+            Consumer<Cart>(
+              builder: (_, cart, ch) => Badge(
+                child: ch!,
+                value: cart.itemCount.toString(),
+                color: Colors.deepOrange,
+              ),
+              child: IconButton(
+                icon: Icon(
+                  Icons.shopping_cart,
+                ),
+                onPressed: () {
+                  // print("push");
+                  Navigator.of(context).pushNamed(CartScreen.routeName);
+                },
+              ),
+            ),
           ],
-          centerTitle: true,
+
         ),
         body: ProductsGrid(_showOnlyFavorites),
       ),
