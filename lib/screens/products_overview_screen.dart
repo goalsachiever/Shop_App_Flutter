@@ -51,7 +51,8 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
                 PopupMenuItem(
                     child: Text("Show All"), value: FilterOptions.All),
               ],
-            )
+            ),
+            
           ],
           centerTitle: true,
         ),

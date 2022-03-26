@@ -2,27 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/cart.dart';
 import '../providers/product.dart';
 import '../screens/product_detail_screen.dart';
 
 class ProductItem extends StatelessWidget {
-  // final String id;
-  // final String title; ek sec ruko
-  // final String imageUrl;
-  //
-  // ProductItem(this.id, this.title, this.imageUrl);
-
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context, listen: false);
-    // print("rebuild");
-
+    final cart = Provider.of<Cart>(context, listen: false);
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: GridTile(
         child: GestureDetector(
           onTap: () {
-            // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ProductDetailScreen(title),));
             Navigator.of(context).pushNamed(
               ProductDetailScreen.routeName,
               arguments: product.id,
@@ -45,7 +38,6 @@ class ProductItem extends StatelessWidget {
               },
               color: Theme.of(context).accentColor,
             ),
-
           ),
           title: Text(
             product.title,
@@ -55,7 +47,9 @@ class ProductItem extends StatelessWidget {
             icon: Icon(
               Icons.add_shopping_cart,
             ),
-            onPressed: () {},
+            onPressed: () {
+              cart.addItem(product.id, product.price, product.title);
+            },
             color: Theme.of(context).accentColor,
           ),
         ),
