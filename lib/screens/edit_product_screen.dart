@@ -33,7 +33,12 @@ class _EditProductScreenState extends State<EditProductScreen> {
   }
 
   void _updateImageUrl() {
+
     if (!_imageUrlFocusNode.hasFocus) {
+      if(_imageUrlController.empty || (!_imageUrlController.startsWith('http') && !_imageUrlController.startsWith('https') ) || (!_imageUrlController.endsWith('.png')&& !_imageUrlController.endsWith('.jpg') && !_imageUrlController.endsWith('.jpeg')))
+      {
+        return ;
+      }
       setState(() {});
     }
   }
@@ -109,6 +114,22 @@ class _EditProductScreenState extends State<EditProductScreen> {
                 keyboardType: TextInputType.number,
                 textInputAction: TextInputAction.next,
                 focusNode: _priceFocusNode,
+                validator: (value){
+                  // return 'This is wrong!';
+                  if(value!.isEmpty)
+                  {
+                    return 'Please enter a price.';
+                  }
+                  if(double.tryParse(value)== null)
+                    {
+                      return 'Please enter a valid number.';
+                    }
+                  if(double.parse(value)<=0)
+                    {
+                      return 'Please enter the price greater then Zero';
+                    }
+                  return null;
+                },
                 onFieldSubmitted: (_) {
                   FocusScope.of(context).requestFocus(_descriptionFocusNode);
                 },
@@ -128,6 +149,18 @@ class _EditProductScreenState extends State<EditProductScreen> {
                 textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.multiline,
                 focusNode: _descriptionFocusNode,
+                validator: (value){
+                  // return 'This is wrong!';
+                  if(value!.isEmpty)
+                  {
+                    return 'Please enter a description.';
+                  }
+                  if(value.length< 10)
+                  {
+                    return 'Should be atleast 10 character long.';
+                  }
+                  return null;
+                },
                 onSaved: (value) {
                   _editedProduct = Product(
                     title: _editedProduct.title,
@@ -171,6 +204,21 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       controller: _imageUrlController,
                       focusNode: _imageUrlFocusNode,
                       onFieldSubmitted: (_) => _saveForm(),
+                      validator: (value)
+                      {
+                        if(value!.isEmpty)
+                          {
+                            return 'Please enter a image URL.';
+                          }
+                        if(!value.startsWith('http')&& !value.startsWith('https'))
+                          {
+                            return 'Please enter a valid URL.' ;
+                          }
+                        if(!value.endsWith('.png')&& !value.endsWith('.jpg') && !value.endsWith('.jpeg'))
+                          {
+                            return 'Please enter a valid image URL.';
+                          }
+                      },
                       onSaved: (value) {
                         _editedProduct = Product(
                           title: _editedProduct.title,
