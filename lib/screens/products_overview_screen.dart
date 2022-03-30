@@ -9,6 +9,7 @@ import '../providers/products.dart';
 import '../widgets/product_item.dart';
 import '../providers/product.dart';
 import '../widgets/products_grid.dart';
+import 'package:http/http.dart' as http;
 
 enum FilterOptions {
   Favorites,
@@ -22,6 +23,38 @@ class ProductOverviewScreen extends StatefulWidget {
 
 class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
   var _showOnlyFavorites = false;
+  var _isInit = true;
+  var _isLoading = false;
+
+  @override
+  void initState() {
+    // http.get();
+    // Provider.of<Products>(context).fetchAndSetProduct();
+    // Future.delayed(Duration.zero).then((_){
+    //   Provider.of<Products>(context).fetchAndSetProduct();
+    //
+    // });
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies()  {
+    // TODO: implement didChangeDependencies
+    if (_isInit) {
+      setState(() {
+        _isLoading = true;
+      });
+
+      Provider.of<Products>(context).fetchAndSetProduct().then((_) {
+        setState(() {
+          _isLoading = false;
+        });
+      });
+      }
+    _isInit = false;
+          super.didChangeDependencies();
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +83,8 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
               icon: Icon(
                 Icons.more_vert,
               ),
-              itemBuilder: (_) => [
+              itemBuilder: (_) =>
+              [
                 PopupMenuItem(
                     child: Text("Only Favorites"),
                     value: FilterOptions.Favorites),
@@ -59,11 +93,12 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
               ],
             ),
             Consumer<Cart>(
-              builder: (_, cart, ch) => Badge(
-                child: ch!,
-                value: cart.itemCount.toString(),
-                color: Colors.deepOrange,
-              ),
+              builder: (_, cart, ch) =>
+                  Badge(
+                    child: ch!,
+                    value: cart.itemCount.toString(),
+                    color: Colors.deepOrange,
+                  ),
               child: IconButton(
                 icon: Icon(
                   Icons.shopping_cart,
@@ -78,7 +113,8 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
 
         ),
         drawer: AppDrawer(),
-        body: ProductsGrid(_showOnlyFavorites),
+        body: _isLoading ? Center(child: CircularProgressIndicator(),) : ProductsGrid(_showOnlyFavorites),
+        // body: _isLoading ?  : ProductsGrid(_showOnlyFavorites),
       ),
     );
   }
